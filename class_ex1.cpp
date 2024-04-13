@@ -16,7 +16,7 @@ class Student {
 double Student::getAvg() const{
     int sum = 0;
     for(int i = 0; i < size; i++) sum += score[i];
-    return sum / 3.0;
+    return sum / size * 1.0;
 }
 
 void Student::setPrecision(int n) const { 
