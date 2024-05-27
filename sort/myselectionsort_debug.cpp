@@ -1,3 +1,6 @@
+// compile for debugging
+// g++ myselectionsort_debug.cpp -DEBUGMODE
+
 #include <iostream>
 using namespace std;
 
@@ -16,7 +19,7 @@ void selectionSort(int *arr, int n){
             if(arr[min_i] > arr[j]) min_i = j;
         }
         if(i != min_i) swap(arr[i], arr[min_i]);
-#ifdef debugmode
+#ifdef DEBUGMODE
     print(arr, n);
 #endif
     }
