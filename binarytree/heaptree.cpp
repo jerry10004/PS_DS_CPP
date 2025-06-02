@@ -1,81 +1,86 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 #define _DEBUG
+#define MAX 20
 
-int size = 0;
+vector<int> heap;
 
-void printArray(int* arr, int size)
-{
+void printHeap(const vector<int>& heap) {
     cout << "==> Heap : ";
-    for (int i = 0; i < size; ++i)
-        cout << arr[i] << " ";
+    for (int v : heap) cout << v << " ";
     cout << endl;
 }
 
-void insertKey(int arr[], int N, int value)
-{
-    if (size == N - 1)
-    {
-        cout << "\nOverflow: Could not insertKey\n";
-        return;
-    }
-
-    //insert operation
-
-
-
-
-#ifdef _DEBUG
-    printArray(arr, size);
-#endif  
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
 }
 
-void maxHeapify(int arr[], int rooti)
-{
-   // maxHeapify operation
-}
-
-void deleteKey(int arr[], int N){
-    if (size == 0)
-    {
-        cout << "\nCould not deleteKey\n";
+// heapify-up
+void insertKey(int value) {
+    
+    if (heap.size() >= MAX) {
+        cout << "\n[Overflow] Heap is full. Could not insertKey\n";
         return;
     }
-#ifdef _DEBUG
-    cout << "=> Delete " << arr[0] << endl;
-#endif    
+    
+   //insert operation
 
+#ifdef _DEBUG
+    printHeap(heap);
+#endif
+}
+
+// heapify-down
+void maxHeapify(int i) {
     // maxHeapify operation
 
 
     
-#ifdef _DEBUG
-    printArray(arr, size);
-#endif     
 }
 
-int main()
-{
-    int arr[20];
+void deleteKey() {
+    int size = heap.size();
+    if (size == 0) {
+        cout << "\nCould not deleteKey (Heap is empty)\n";
+        return;
+    }
+
+#ifdef _DEBUG
+    cout << "=> Delete " << heap[0] << endl;
+#endif
+
+    // maxHeapify operation
+
+
+#ifdef _DEBUG
+    printHeap(heap);
+#endif
+}
+
+int main() {
     int menu;
-    while(1){        
-        cout << "1. insert 2.delete 3.print 4.quit > " ;
+    while (1) {
+        cout << "1. insert 2. delete 3. print 4. quit > ";
         cin >> menu;
-        if(menu == 1){
+
+        if (menu == 1) {
             int value;
             cout << "new value? ";
             cin >> value;
-            insertKey(arr, 20, value);
+            insertKey(value);
         }
-        else if(menu == 2){            
-            deleteKey(arr, 20);
+        else if (menu == 2) {
+            deleteKey();
         }
-        else if(menu == 3){
-            printArray(arr, size);
+        else if (menu == 3) {
+            printHeap(heap);
         }
         else break;
     }
+
     cout << "Bye!" << endl;
-    
     return 0;
 }
