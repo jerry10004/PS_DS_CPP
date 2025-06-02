@@ -9,13 +9,13 @@ public:
     TreeNode *left, *right;
     TreeNode(int x){
         val = x;
-        left = right = NULL;
+        left = right = nullptr;
     }
 };
  
-TreeNode* buildTree(int *nums, int size) {
-    if (nums == NULL) return NULL;
-    
+TreeNode* buildTree(int *nums, int size) { 
+    if(size == 0) return nullptr;
+ 
     TreeNode* root = new TreeNode(nums[0]);
     queue<TreeNode*> q;
     q.push(root);
@@ -34,7 +34,8 @@ TreeNode* buildTree(int *nums, int size) {
     }
     return root;
 }
- 
+
+// 중위 순회 (Left → Root → Right)
 void printInOrderTree(TreeNode* root) {
     if (!root) return;
     printInOrderTree(root->left);
@@ -45,6 +46,8 @@ void printInOrderTree(TreeNode* root) {
 int main() {
     int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     int size = sizeof(nums) / sizeof(int);
+
+    // 배열을 완전 이진 트리로 변환
     TreeNode* root = buildTree(nums,size);
     printInOrderTree(root);
     return 0;
