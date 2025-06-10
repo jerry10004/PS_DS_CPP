@@ -1,5 +1,5 @@
 // compile for debugging
-// g++ myselectionsort_debug.cpp -DEBUGMODE
+// g++ myselectionsort_debug.cpp -DDEBUGMODE
 
 #include <iostream>
 using namespace std;
